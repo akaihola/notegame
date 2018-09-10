@@ -1,0 +1,114 @@
+html {
+  background: #888;
+}
+
+ul {
+  list-style: none;
+}
+
+#app, html, body {
+  width: 100%;
+  margin: 0;
+}
+
+#app {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+}
+
+.timer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  border: solid green 1px;
+  padding: 3em;
+}
+
+.score {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: #eee;
+  padding: 3em;
+}
+
+#card-area {
+  flex: 1;
+  perspective: 1000px;
+}
+
+#card {
+  transform-style: preserve-3d;
+  transition: all 0.1s linear;
+
+  padding: 0;
+  width: 10em;
+  height: 13em;
+  background: transparent;
+}
+
+#card.face-down {
+  transform: rotateY(180deg);
+}
+
+#card .front, #card .back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: white;
+  border-radius: 0.5em;
+  box-shadow: 2px 2px 10px black;
+  backface-visibility: hidden;
+}
+
+#card .back {
+  display: block;
+  transform: rotateY(180deg);
+
+  background-image:
+  linear-gradient(45deg, #6a6 25%, transparent 25.01%),
+  linear-gradient(-45deg, #6a6 25%, transparent 25.01%),
+  linear-gradient(45deg, transparent 75%, #6a6 75.01%),
+  linear-gradient(-45deg, transparent 75%, #6a6 75.01%);
+  background-size: 20px 20px;
+  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+
+  border: solid #6a6 10px;
+  height: calc(100% - 20px);
+  width: calc(100% - 20px);
+}
+
+#music {
+  height: 13em !important;
+}
+
+.points-item {
+  position: absolute;
+  top: 9em;
+  background: yellow;
+  color: #660;
+  border-radius: 0.5em;
+  box-shadow: 0px 0px 4px #880;
+  transform: translateX(6em);
+  opacity: 0;
+}
+
+.points-item.negative {
+  background: red;
+  color: #fff;
+  box-shadow: 0px 0px 4px #800;
+}
+
+.points-enter-active {
+  transition: all 1s linear;
+}
+
+.points-enter, .points-leave-to {
+  transform: translateX(1em);
+  opacity: 1;
+}
+
+button {
+  xflex: 2;
+}

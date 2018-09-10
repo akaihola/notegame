@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="main.css">
+        <script src="vue.js"></script>
+    </head>
+    <body>
+        <article id="app">
+            <section class="timer">{{ time_left }}</section>
+            <section id="card-area">
+                <div id="card" v-bind:class="{ 'face-down': face_down }">
+                    <div class="front">
+                        <div id="music">&nbsp;</div>
+                    </div>
+                    <div class="back">
+                        <ul id="points">
+                            <transition-group name="points" tag="li">
+                                <span v-for="(amount, index) in point_indicators"
+                                      v-bind:key="index"
+                                      v-bind:class="{ 'points-item': true, negative: amount < 0 }">{{ amount > 0 ? '+' : '' }}{{ amount }}</span>
+                            </transition-group>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section class="score">{{ score }}</section>
+            <button @click="start">start</button>
+        </aside>
+        <script type="module" src="__target__/main.js"></script>
+    </body>
+</html>
